@@ -1,0 +1,41 @@
+{
+    "name": "ibm-cloud",
+    "description": "VoterMSP on IBM Cloud",
+    "version": "1.0.0",
+    "client": {
+        "organization": "votermsp"
+    },
+    "organizations": {
+        "votermsp": {
+            "mspid": "votermsp",
+            "certificateAuthorities": [
+                "X.X.X.X:X"
+            ],
+            "peers": [
+                "X.X.X.X:X"
+            ]
+        }
+    },
+    "peers": {
+        "X.X.X.X:X": {
+            "url": "grpcs://X.X.X.X:X",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx=\n-----END CERTIFICATE-----\n"
+            },
+            "grpcOptions": {
+                "ssl-target-name-override": "X.X.X.X:X"
+            }
+        }
+    },
+    "certificateAuthorities": {
+        "X.X.X.X:X": {
+            "url": "https://X.X.X.X:X",
+            "caName": "ca",
+            "tlsCACerts": {
+                "pem": [
+                    "-----BEGIN CERTIFICATE-----\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx\nxxxx==\n-----END CERTIFICATE-----\n"
+                ]
+            }
+        }
+    }
+}

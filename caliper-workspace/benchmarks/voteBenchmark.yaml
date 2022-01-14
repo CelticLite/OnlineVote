@@ -1,0 +1,116 @@
+test:
+    name: vote-benchmark
+    description: GoVote Contract Benchmark
+    workers:
+      type: local
+      number: 1
+    rounds:
+      - label: GetBallot
+        description: Ballot Retrival Benchmark
+        txNumber: 5
+        rateControl:
+          type: fixed-load
+          opts:
+            tps: 10
+        workload:
+          module: workload/GetBallot.js
+          arguments:
+            items: 3
+            ballots: 1
+            invokerId: Voter Admin
+            contractId: GoVote
+
+      # - label: NewVoter Throughput at 100 tps
+      #   description: Benchmark NewVoter throughput (tps) at a tx rate of 100 tps
+      #   txNumber: 500
+      #   rateControl:
+      #     type: fixed-load
+      #     opts:
+      #       tps: 100
+      #   workload:
+      #     module: workload/NewVoter.js
+      #     arguments:
+      #       contractId: GoVote
+
+      # - label: NewVoter Throughput at 150 tps
+      #   description: Benchmark NewVoter throughput (tps) at a tx rate of 150 tps
+      #   txNumber: 500
+      #   rateControl:
+      #     type: fixed-load
+      #     opts:
+      #       tps: 150
+      #   workload:
+      #     module: workload/NewVoter.js
+      #     arguments:
+      #       contractId: GoVote
+
+      # - label: NewVoter Throughput at 200 tps
+      #   description: Benchmark NewVoter throughput (tps) at a tx rate of 200 tps
+      #   txNumber: 500
+      #   rateControl:
+      #     type: fixed-load
+      #     opts:
+      #       tps: 200
+      #   workload:
+      #     module: workload/NewVoter.js
+      #     arguments:
+      #       contractId: GoVote
+
+      # - label: NewVoter Throughput at 250 tps
+      #   description: Benchmark NewVoter throughput (tps) at a tx rate of 250 tps
+      #   txNumber: 500
+      #   rateControl:
+      #     type: fixed-load
+      #     opts:
+      #       tps: 250
+      #   workload:
+      #     module: workload/NewVoter.js
+      #     arguments:
+      #       contractId: GoVote
+
+      # - label: NewVoter Throughput at 300 tps
+      #   description: Benchmark NewVoter throughput (tps) at a tx rate of 300 tps
+      #   txNumber: 500
+      #   rateControl:
+      #     type: fixed-load
+      #     opts:
+      #       tps: 300
+      #   workload:
+      #     module: workload/NewVoter.js
+      #     arguments:
+      #       contractId: GoVote
+
+      # - label: NewVoter Throughput at 100-300 tps
+      #   description: Benchmark NewVoter throughput (tps) at a tx rate of 100 - 300 tps
+      #   txNumber: 500
+      #   rateControl:
+      #     type: linear-rate
+      #     opts:
+      #       startingTps: 100
+      #       finishingTps: 300
+      #   workload:
+      #     module: workload/NewVoter.js
+      #     arguments:
+      #       contractId: GoVote
+
+      # - label: CastVote
+      #   description: CastVote Benchmark
+      #   txNumber: 10
+      #   rateControl: 
+      #     type: fixed-load
+      #     opts:
+      #       tps: 25
+      #   workload:
+      #     module: workload/CastVote.js
+      #     arguments:
+      #       tx: 10 # Must equal txNumber
+      #       voters: 1
+      #       items: 2
+      #       contractId: GoVote
+
+# monitors:
+#   resource:
+#   - module: process
+#     options:
+#       interval: 3
+#       processes: [{ command: 'node', arguments: 'caliper.js', multiOutput: 'avg' }]

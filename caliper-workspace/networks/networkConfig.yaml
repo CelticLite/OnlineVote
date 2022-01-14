@@ -1,0 +1,23 @@
+name: Remote Caliper
+version: "2.0.0"
+
+caliper:
+  blockchain: fabric
+
+channels:
+  - channelName: mychannel
+    contracts:
+    - id: GoVote
+
+organizations:
+  - mspid: votermsp
+    identities:
+      certificates:
+      - name: 'Voter Admin'
+        clientPrivateKey:
+          path: '[PATH_TO_PRIVATE_KEY]'
+        clientSignedCert:
+          path: '[PATH_TO_SIGNED_CERT]'
+    connectionProfile:
+      path: './networks/connection-ibm.json'
+      discover: false
